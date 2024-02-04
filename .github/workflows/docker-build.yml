@@ -16,6 +16,11 @@ env:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [ 3.11, 3.12 ]
+        arch: ['amd64', 'arm64']
 
     steps:
       - uses: actions/checkout@v4
@@ -54,6 +59,7 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/${{ matrix.arch }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: ARCH=${{ matrix.arch }} PYTHON_VERSION=${{ python-version }}
