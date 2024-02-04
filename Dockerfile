@@ -1,3 +1,4 @@
+ARG PYTHON_VERSION=3.12
 from python:${PYTHON_VERSION}-slim as build_amd64
 ONBUILD RUN pip install libsass
 
