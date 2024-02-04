@@ -62,4 +62,4 @@ jobs:
           platforms: linux/${{ matrix.arch }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: ARCH=${{ matrix.arch }} PYTHON_VERSION=${{ python-version }}
+          build-args: ARCH=${{ matrix.arch }} PYTHON_VERSION=${{ maxtrix.python-version }}
