@@ -52,7 +52,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.') }}
-            type=raw,value={{ matrix.python-version }}-{{ matrix.arch }}
+            type=raw,value=${{ matrix.python-version }}-${{ matrix.arch }}
             type=sha
 
       - name: Build and push
